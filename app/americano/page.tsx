@@ -1,7 +1,10 @@
-"use client";
+import { Suspense } from "react";
+import AmericanoClient from "./AmericanoClient";
 
-import TournamentApp from "@/components/TournamentApp";
-
-export default function AmericanoPage() {
-  return <TournamentApp variant="AMERICANO" />;
+export default function Page() {
+  return (
+    <Suspense fallback={<div className="p-6 text-slate-600">Ładowanie…</div>}>
+      <AmericanoClient />
+    </Suspense>
+  );
 }
