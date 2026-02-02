@@ -339,3 +339,27 @@ export function setScore(
 
   return recomputeState({ ...state, rounds });
 }
+
+/** ---------- tournament initialization ---------- */
+export function initTournament(variant: Variant): TournamentState {
+  return {
+    id: uid(),
+    started: false,
+    startedAt: null,
+
+    players: [],
+    teams: [],
+    rounds: [],
+
+    config: {
+      variant,
+      playMode: "ROUNDS",        // albo "TIMER"
+      timerMinutes: 60,          // używane, gdy playMode="TIMER"
+      courts: 1,
+      matchPoints: 21,
+      scoringMode: "INDIVIDUAL", // albo "TEAM"
+      roundsPlanned: 0,          // 0 = AUTO
+      autoRematch: false,
+    },
+  } as TournamentState;
+}
